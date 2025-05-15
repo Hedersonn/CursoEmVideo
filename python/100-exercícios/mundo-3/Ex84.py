@@ -1,52 +1,20 @@
-#Faça um programa que leia nome e peso de várias pessoas, guardando tudo em uma lista. No final, mostre:
-# A) Quantas pessoas foram cadastradas.
-# B) Uma listagem com as pessoas mais pesadas.
-# C) Uma listagem com as pessoas mais leves.
-
-from time import sleep
+#Crie um programa onde o usuário possa digitar sete valores numéricos e cadastre-os em uma lista única que mantenha separados os valores pares e ímpares. No final, mostre os valores pares e ímpares em ordem crescente.
 
 # Valores
 
-pessoas = []
-pessoa = []
-maior_peso = menor_peso = 0
-pessoas_pesadas = []
-pessoas_leves = []
+numeros = [[], []]
 
-# Loop
+#Loop
 
-while True:
-    nome = str(input("Nome: "))
-    peso = float(input("Peso: "))
-    pessoas.append([nome, peso])
+for cont in range (0, 7):
+    numero = int(input("Número > "))
 
-    if len(pessoas) == 1:
-        maior_peso = menor_peso = peso
+    if numero % 2 == 0:
+        numeros[0].append(numero)
     else:
-        if peso > maior_peso:
-            maior_peso = peso
-        elif peso < menor_peso:
-            menor_peso = peso
+        numeros[1].append(numero)
 
-    continuar = str(input("Deseja continuar? S|N > "))
+# Valores finais
 
-    if continuar in "Nn":
-        print("Encerrando o programa..")
-        sleep(1)
-        break
-
-for p in pessoas:
-    if p[1] == maior_peso:
-        pessoas_pesadas.append(p[0])
-    elif p[1] == menor_peso:
-        pessoas_leves.append(p[0])
-
-
-# Mostra de valores
-
-print(f"Cadastros > {contador}")
-print(f"Pessoas com maior peso > {maior_peso} < {pessoas_pesadas}")
-print(f"Pessoas com menor peso > {menor_peso} < {pessoas_leves}")
-print(pessoas)
-
-
+print(f"Pares > {sorted(numeros[0])}")
+print(f"Ímpares > {sorted(numeros[1])}")

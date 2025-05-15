@@ -1,38 +1,20 @@
-#Crie um programa que tenha uma dupla totalmente preenchida com uma contagem por extenso, de zero até vinte.
-#  Seu programa deverá ler um número pelo teclado (entre 0 e 20) e mostrá-lo por extenso.
+#Crie um programa onde o usuário digite uma expressão qualquer que use parênteses. Seu aplicativo deverá analisar se a expressão passada está com os parênteses abertos e fechados na ordem correta.
 
+expressao = str(input("Expressão >  "))
+cont_parenteses = []
 
-#Valores
+for parenteses in expressao:
 
-extenso = (
-    "Zero",
-    "Um",
-    "Dois",
-    "Tres",
-    "Quatro",
-    "Cinco",
-    "Seis",
-    "Sete",
-    "Oito",
-    "Nove",
-    "Dez",
-    "Onze",
-    "Doze",
-    "Treze",
-    "Quatorze",
-    "Quinze",
-    "Dezesseis",
-    "Dezessete",
-    "Dezoito",
-    "Dezenove",
-    "Vinte"
-)
+    if parenteses == "(":
+        cont_parenteses.append("(")
+    elif parenteses == ")":
+        if len(cont_parenteses) > 0:
+            cont_parenteses.pop()
+        else:
+            cont_parenteses.append(")")
+            break
 
-numero = int(input("Digite um numero para mostrar em extenso: "))
-
-#Loop
-
-while numero not in range(0, 21):
-    numero = int(input("Numero invalido! Digite novamente: "))
-
-print(f"O número {numero} por extenso é {extenso[numero]}")
+if len(cont_parenteses) == 0:
+    print("Sua expressão é válida!")
+else:
+    print("Sua expressão está incorreta!")

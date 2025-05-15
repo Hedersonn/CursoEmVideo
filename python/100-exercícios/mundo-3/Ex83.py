@@ -1,20 +1,52 @@
-#Crie um programa onde o usuário digite uma expressão qualquer que use parênteses. Seu aplicativo deverá analisar se a expressão passada está com os parênteses abertos e fechados na ordem correta.
+#Faça um programa que leia nome e peso de várias pessoas, guardando tudo em uma lista. No final, mostre:
+# A) Quantas pessoas foram cadastradas.
+# B) Uma listagem com as pessoas mais pesadas.
+# C) Uma listagem com as pessoas mais leves.
 
-expressao = str(input("Expressão >  "))
-cont_parenteses = []
+from time import sleep
 
-for parenteses in expressao:
+# Valores
 
-    if parenteses == "(":
-        cont_parenteses.append("(")
-    elif parenteses == ")":
-        if len(cont_parenteses) > 0:
-            cont_parenteses.pop()
-        else:
-            cont_parenteses.append(")")
-            break
+pessoas = []
+pessoa = []
+maior_peso = menor_peso = 0
+pessoas_pesadas = []
+pessoas_leves = []
 
-if len(cont_parenteses) == 0:
-    print("Sua expressão é válida!")
-else:
-    print("Sua expressão está incorreta!")
+# Loop
+
+while True:
+    nome = str(input("Nome: "))
+    peso = float(input("Peso: "))
+    pessoas.append([nome, peso])
+
+    if len(pessoas) == 1:
+        maior_peso = menor_peso = peso
+    else:
+        if peso > maior_peso:
+            maior_peso = peso
+        elif peso < menor_peso:
+            menor_peso = peso
+
+    continuar = str(input("Deseja continuar? S|N > "))
+
+    if continuar in "Nn":
+        print("Encerrando o programa..")
+        sleep(1)
+        break
+
+for p in pessoas:
+    if p[1] == maior_peso:
+        pessoas_pesadas.append(p[0])
+    elif p[1] == menor_peso:
+        pessoas_leves.append(p[0])
+
+
+# Mostra de valores
+
+print(f"Cadastros > {contador}")
+print(f"Pessoas com maior peso > {maior_peso} < {pessoas_pesadas}")
+print(f"Pessoas com menor peso > {menor_peso} < {pessoas_leves}")
+print(pessoas)
+
+

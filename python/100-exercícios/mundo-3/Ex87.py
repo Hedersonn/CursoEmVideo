@@ -1,36 +1,38 @@
-#Aprimore o desafio anterior, mostrando no final: 
-# A) A soma de todos os valores pares digitados.
-# B) A soma dos valores da terceira coluna.
-# C) O maior valor da segunda linha.
+#Faça um programa que ajude um jogador da MEGA SENA a criar palpites.O programa vai perguntar quantos jogos serão gerados e vai sortear 6 números entre 1 e 60 para cada jogo, cadastrando tudo em uma lista composta
 
-# Valor
+from time import sleep
+from random import randint
 
-matriz = []
-pares = 0
-terceira = 0
+# Valores
+
+escolha = int(input("Quantos jogos irá querer?\n > "))
+jogos = []
+jogo = []
 
 # Loop
 
-for linha in range(1, 4):
-    colunas = []
-    for coluna in range (0, 3):
-        valor = (int(input(f"Linha: {linha}\nColuna: {coluna + 1}\n >  ")))
-        
-        if valor % 2 == 0: # pares
-            pares += valor
-        if coluna == 2:
-            terceira += valor
+for _ in range(0, escolha):
+    contador = 0
 
-        colunas.append(valor)
-    matriz.append(colunas)
+    while True:
+        numero = randint(1, 60)
 
-print("=" * 40)
-for lista in matriz:
-    for numero in lista:
-        print(f"[{numero:^5}]", end=" ")
-    print()
-print("=" * 40)
+        if numero not in jogo:
+            jogo.append(numero)
+            jogo.sort()
+            contador += 1
+        if contador == 6:
+            jogos.append(jogo[:])
+            jogo.clear()
+            break
 
-print(f"Soma dos pares: {pares}")
-print(f"Soma da 3ª coluna: {terceira}")
-print(f"Maior valor da 2ª linha: {max(matriz[1])}")
+
+# Valores finais
+
+print("-=" * 10, "MEGA SENA", "=-" * 10, "\n")
+
+for i, j in enumerate(jogos):
+    print(f"{i + 1}º Jogo > {j}".center(50))
+    sleep(1)
+
+print("\n", " Boa sorte ".center(52, "="))

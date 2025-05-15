@@ -1,16 +1,21 @@
-#Faça um programa que leia nome e média de um aluno, guardando também a situação em um dicionário. No final, mostre o conteúdo da estrutura na tela.
+#Crie um programa onde 4 jogadores joguem um dado e tenham resultados aleatórios. Guarde esses resultados em um dicionário em Python. No final, coloque esse dicionário em ordem, sabendo que o vencedor tirou o maior número no dado.
 
+from random import randint
+from time import sleep
+from operator import itemgetter
 
-# Descobrir sobre o aluno
+# Ler o número de cada jogador
 
-aluno = {"Aluno": str(input("Nome do aluno: ")),
-         "Média": float(input("Média do aluno: "))}
-if aluno["Média"] >= 7.0:
-    aluno["Condição"] = "APROVADO"
-else:
-    aluno["Condição"] = "REPROVADO"
+jogadores = {}
 
-# Pegar cada item do dict do aluno
+for j in range(1, 5):
+    jogadores[f"jogador{j}"] = randint(1, 6)
+    print(f"O jogador {j} tirou o número {jogadores[f"jogador{j}"]}")
+    sleep(1.2)
 
-for k, v in aluno.items():
-    print(f"{k}: {v}")
+# Colocar em ordem e mostrar na tela
+
+jogadores = sorted(jogadores.items(), key=itemgetter(1), reverse=True)
+
+for posicao, jogador in enumerate(jogadores):
+    print(f"{posicao + 1}º lugar: {jogador[0]} com {jogador[1]}")

@@ -1,20 +1,18 @@
-#Crie um programa onde o usuário possa digitar sete valores numéricos e cadastre-os em uma lista única que mantenha separados os valores pares e ímpares. No final, mostre os valores pares e ímpares em ordem crescente.
+#Crie um programa que declare uma matriz de dimensão 3x3 e preencha com valores lidos pelo teclado. No final, mostre a matriz na tela, com a formatação correta.
 
-# Valores
+# Valor
 
-numeros = [[], []]
+matriz = []
 
-#Loop
+# Loop
 
-for cont in range (0, 7):
-    numero = int(input("Número > "))
+for linha in range(1, 4):
+    colunas = []
+    for coluna in range (0, 3):
+        colunas.append(int(input(f"Linha: {linha}\nColuna: {coluna + 1}\n >  ")))
+    matriz.append(colunas)
 
-    if numero % 2 == 0:
-        numeros[0].append(numero)
-    else:
-        numeros[1].append(numero)
-
-# Valores finais
-
-print(f"Pares > {sorted(numeros[0])}")
-print(f"Ímpares > {sorted(numeros[1])}")
+for lista in matriz:
+    for numero in lista:
+        print(f"[{numero:^5}]", end=" ")
+    print()

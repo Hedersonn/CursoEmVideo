@@ -1,38 +1,43 @@
-#Faça um programa que ajude um jogador da MEGA SENA a criar palpites.O programa vai perguntar quantos jogos serão gerados e vai sortear 6 números entre 1 e 60 para cada jogo, cadastrando tudo em uma lista composta
+#Crie um programa que leia nome e duas notas de vários alunos e guarde tudo em uma lista composta. No final, mostre um boletim contendo a média de cada um e permita que o usuário possa mostrar as notas de cada aluno individualmente.
 
 from time import sleep
-from random import randint
 
-# Valores
+alunos = []
 
-escolha = int(input("Quantos jogos irá querer?\n > "))
-jogos = []
-jogo = []
+# Cadastro de alunos
 
-# Loop
+while True:
+    nome = str(input("Digite o nome do aluno: "))
+    nota1 = float(input("1ª Nota > "))
+    nota2 = float(input("2ª Nota > "))
+    alunos.append([nome, nota1, nota2])
+    
+    continuar = str(input("Quer continuar? S|N > ")).lower().strip()[0]
+    if continuar == 'n':
+        print("Fechando programa..")
+        sleep(1.2)
+        break
 
-for _ in range(0, escolha):
-    contador = 0
+# Exibe boletim geral
 
-    while True:
-        numero = randint(1, 60)
+print("\n", "-_" * 25, "\n")
+print(f"{'Nº':<5}{'NOME':<20}{'MÉDIA':>10}")
+print("-" * 40)
+for i, aluno in enumerate(alunos):
+    media = (aluno[1] + aluno[2]) / 2
+    print(f"{i + 1:<5}{aluno[0]:<20}{media:>10.1f}")
+print("-" * 40)
 
-        if numero not in jogo:
-            jogo.append(numero)
-            jogo.sort()
-            contador += 1
-        if contador == 6:
-            jogos.append(jogo[:])
-            jogo.clear()
-            break
+# Consulta individual
 
-
-# Valores finais
-
-print("-=" * 10, "MEGA SENA", "=-" * 10, "\n")
-
-for i, j in enumerate(jogos):
-    print(f"{i + 1}º Jogo > {j}".center(50))
-    sleep(1)
-
-print("\n", " Boa sorte ".center(52, "="))
+while True:
+    escolha = int(input("\nDigite o número do aluno <999 CANCELA> ")) - 1
+    if escolha == 998:
+        print("Saindo do sistema de boletins...")
+        break
+    if 0 <= escolha < len(alunos):
+        print(f"\nNotas de {alunos[escolha][0]}:")
+        print(f" 1ª Nota: {alunos[escolha][1]}")
+        print(f" 2ª Nota: {alunos[escolha][2]}")
+    else:
+        print("Número inválido. Tenta de novo.")
