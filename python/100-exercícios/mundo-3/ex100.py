@@ -24,7 +24,6 @@ def somaPar(pares):
         if numero % 2 == 0:
             soma += numero
     print(f"A soma dos números pares de {pares} é {soma}")
-            
 
 
 numeros = []
