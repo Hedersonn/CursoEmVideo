@@ -4,9 +4,14 @@
 # C) Uma lista com as mulheres
 # D) Uma lista de pessoas com idade acima da média
 
+
+# Valores
+
 pessoas = []
 mulheres = []
 idades = 0
+
+# Loop
 
 while True:
     pessoa = {}
@@ -36,12 +41,15 @@ while True:
         print('Fechando programa.')
         break
 
+# Valores finais
+
 media = idades / len(pessoas)
 
 print("-=" * 20)
+
 print(f"Ao todo, foram {len(pessoas)} pessoa{'s' if len(pessoas) > 1 else ''} cadastradas.")
 print(f"A média das idades é de {media:.0f}")
-print("C) Mulheres cadastradas:", ', '.join(mulheres) if mulheres else "Nenhuma mulher cadastrada.")
+print("Mulheres cadastradas:", ', '.join(mulheres) if mulheres else "Nenhuma mulher cadastrada.")
 
 acima = [p for p in pessoas if p['idade'] > media]
 print(f"Pessoas acima da idade média:")
