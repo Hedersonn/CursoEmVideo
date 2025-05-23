@@ -9,6 +9,11 @@
 
 
 def notas(*notas, sit=False):
+    """
+    *notas: Recebe várias notas
+    sit: True >mostra a situação da média da turma< | False >Não mostra<
+    return > Guardar e retornar o dicionário (resumo)
+    """
     media = menor = maior = 0
 
     resumo = {
@@ -30,5 +35,6 @@ def notas(*notas, sit=False):
     return resumo
 
 print(notas(2,5,3, sit=True))
+help(notas)
 
         
