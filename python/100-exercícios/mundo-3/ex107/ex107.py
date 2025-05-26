@@ -1,7 +1,7 @@
 #Crie um módulo chamado moeda.py que tenha as funções incorporadas aumentar(), diminuir(), dobro() e metade(). Faça também um programa que importe esse módulo e use algumas dessas funções.
 
 
-import moeda
+from ex111.utilidadesCeV import moeda
 
 v = float(input("Digite o valor em R$: "))
 
