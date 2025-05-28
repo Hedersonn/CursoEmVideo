@@ -10,6 +10,3 @@ def leiaInt(mensagem):
         print("\033[31m Erro! Digite um número inteiro válido!\033[m")
         n = input(mensagem)
     return int(n)
-
-n = leiaInt("Digite um número: ")
-print(f"Você digitou o número {n}")
