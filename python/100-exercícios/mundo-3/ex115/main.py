@@ -1,7 +1,8 @@
 # Vamos criar um menu em Python, usando modularização com opcao de ver pessoa cadastrada, cadastrar nova pessoa e sair do sistema.
 #Criar um arquivo e colocar as pessoas com seu nome e idade.
 
-from utilidades.minhas_utilidades import *
+from utilidades.arquivos import *
+from utilidades.grafica import *
 
 verificar_arquivo = "usuarios.txt"
 if not verificador_arquivo(verificar_arquivo):
